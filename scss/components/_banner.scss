@@ -1,0 +1,335 @@
+.bannerWrap {
+  .banner {
+    background: url("/images/index/banner.png") no-repeat left / cover;
+    height: 450px;
+    @include pc-1440 {
+      height: 400px;
+    }
+    @include pc {
+      height: 380px;
+      background-position: -150px bottom;
+    }
+    @include mobile-767 {
+      height: 300px;
+    }
+    @media screen and (max-width: 576px) {
+      height: 200px;
+      background-position: -50px bottom;
+    }
+    @include mobile {
+      height: 150px;
+      background-position: -50px bottom;
+    }
+    .bannerTxt {
+      padding-left: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: inherit;
+      color: #363636;
+      width: 55%;
+      @media screen and (max-width: 576px) {
+        width: 65%;
+        max-width: 320px;
+      }
+      @include mobile {
+        width: 70%;
+        max-width: 230px;
+      }
+      p {
+        @include font-size_h2;
+        @include pc {
+          font-size: 36px;
+        }
+        @include mobile-767 {
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+        @media screen and (max-width: 576px) {
+          font-size: 20px;
+        }
+        @include mobile {
+          font-size: 14px;
+          line-height: 1;
+        }
+      }
+
+      span {
+        @include font-size_p;
+        @include mobile-767 {
+          font-size: 14px;
+          line-height: 1.2;
+        }
+        @include mobile {
+          font-size: 12px;
+          line-height: 1;
+        }
+      }
+    }
+  }
+  .swiper-pagination {
+    @include mobile {
+      bottom: 5px;
+    }
+  }
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #f5f7f8;
+    opacity: 1;
+
+    &-active {
+      width: 30px;
+      border-radius: 10px;
+    }
+    @media screen and (max-width: 576px) {
+      width: 8px;
+      height: 8px;
+      &-active {
+        width: 15px;
+      }
+    }
+    @include mobile {
+      width: 5px;
+      height: 5px;
+      &-active {
+        width: 10px;
+      }
+    }
+  }
+}
+
+.mainBanner {
+  width: 100%;
+  position: relative;
+  @include flex-center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.bannerContent {
+  width: 1320px;
+  height: 50px;
+  position: absolute;
+  top: 25%;
+  @include pc-1340{
+    width: 95%;
+    margin: auto;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: 42px;
+    color: white;
+    max-width: 580px;
+
+    @include pc{
+      font-size: 36px;
+    }
+
+    @include pad{
+      font-size: 22px;
+    }
+
+    @include mobile-550{
+      font-size: 18px;
+      max-width: 250px;
+    }
+  }
+
+  .describe {
+    display: block;
+    font-weight: 400;
+    font-size: 18px;
+    color: white;
+
+    @include pc{
+      font-size: 16px;
+    }
+    @include pad{
+      font-size: 12px;
+    }
+
+    @include mobile-550{
+      display: none;
+    }
+  }
+}
+
+.bannerTrendingContent {
+  width: 1320px;
+  text-align: center;
+  height: 50px;
+  position: absolute;
+  top: 25%;
+  @include pc-1340{
+    width: 95%;
+    margin: auto;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: 42px;
+    color: #FFFFFF;
+    width: 100%;
+
+    @include pc{
+      font-size: 36px;
+    }
+
+    @include pad{
+      font-size: 26px;
+    }
+  }
+
+  .describe {
+    display: block;
+    width: 890px;
+    margin: auto;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+
+    @include pc{
+      font-size: 16px;
+      width: 700px;
+    }
+    @include pad{
+      font-size: 12px;
+      width: 500px;
+    }
+
+    @include mobile-550{
+      display: none;
+    }
+  }
+}
+
+.bannerGuideContent {
+  width: 1320px;
+  text-align: center;
+  height: 50px;
+  position: absolute;
+  top: 25%;
+  @include pc-1340{
+    width: 95%;
+    margin: auto;
+  }
+
+  
+  .guideText{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: 42px;
+    color: white;
+    max-width: 864x;
+
+    @include pc{
+      font-size: 36px;
+    }
+
+    @include pad{
+      font-size: 22px;
+    }
+
+    @include mobile-550{
+      font-size: 18px;
+      max-width: 250px;
+    }
+  }
+
+  .describe {
+    display: block;
+    max-width: 620px;
+    font-size: 18px;
+    color: white;
+
+    @include pc{
+      font-size: 16px;
+    }
+    @include pad{
+      font-size: 12px;
+    }
+
+    @include mobile-550{
+      display: none;
+    }
+  }
+}
+
+.bannerHistoryContent {
+  width: 1320px;
+  height: 50px;
+  position: absolute;
+  top: 25%;
+  @include pc-1340{
+    width: 95%;
+    margin: auto;
+  }
+
+
+  p {
+    font-weight: 700;
+    font-size: 42px;
+    color: white;
+    margin-right: 30px;
+
+    @include pc{
+      font-size: 36px;
+    }
+
+    @include pad{
+      font-size: 22px;
+    }
+
+    @include mobile-550{
+      font-size: 18px;
+      margin-right: 0px;
+    }
+  }
+
+  .pcso {
+    font-weight: 700;
+    font-size: 42px;
+    color: white;
+    margin-right: 156px;
+
+    @include pc{
+      font-size: 36px;
+      margin-right: 0px;
+    }
+
+    @include pad{
+      font-size: 22px;
+    }
+
+    @include mobile-550{
+      font-size: 18px;
+    }
+  }
+
+  .historyText{
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .describe {
+    display: block;
+    max-width: 630px;
+    font-size: 18px;
+    color: white;
+
+    @include pc{
+      display: none;
+      font-size: 16px;
+    }
+  }
+}

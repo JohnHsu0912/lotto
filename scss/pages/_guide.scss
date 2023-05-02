@@ -1,0 +1,62 @@
+.guideContain {
+  @include max-1320;
+
+  .articleTextContain {
+    width: 520px;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include pc-1340 {
+      width: 100%;
+      margin-top: 30px;
+    }
+  }
+
+  .imgArea {
+    max-width: 100%;
+    margin: auto;
+
+    @include pc-1340 {
+      width: 100%;
+    }
+  }
+
+  .articleTitle {
+    color: $primaryColor;
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 30px;
+    @include pc-1340 {
+      
+    }
+  }
+
+  .articleContent {
+    color: #363636;
+    font-weight: 500;
+    font-size: 16px;
+    @include pc-1340 {
+      
+    }
+  }
+}
+
+.articleContain {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 80px 0;
+}
+
+.articleReverseContain {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 80px 0;
+
+  @include pc-1340{
+    flex-direction: column-reverse;
+  }
+}

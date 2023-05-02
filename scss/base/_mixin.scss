@@ -1,0 +1,201 @@
+/*RWD設定-media*/
+@mixin pc-1650 {
+  @media(max-width: $breakpoint-pc-1650) {
+    @content;
+  }
+}
+
+
+@mixin pc-1440 {
+  @media(max-width: $breakpoint-pc-1440) {
+    @content;
+  }
+}
+
+@mixin pc-1400 {
+  @media(max-width:$breakpoint-pc-1400) {
+    @content;
+  }
+}
+
+@mixin pc-1340 {
+  @media(max-width:$breakpoint-pc-1340) {
+    @content;
+  }
+}
+
+@mixin pc-over-990 {
+  @media(min-width: $breakpoint-pc-990) {
+    @content;
+  }
+}
+
+@mixin pc-990 {
+  @media(max-width: $breakpoint-pc-990) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media(max-width: $breakpoint-pc) {
+    @content;
+  }
+}
+
+@mixin pad950 {
+  @media(max-width: $breakpoint-pad950) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media(max-width: $breakpoint-pad) {
+    @content;
+  }
+}
+
+@mixin mobile-767 {
+  @media(max-width: $breakpoint-mobile767) {
+    @content;
+  }
+}
+
+@mixin mobile-600 {
+  @media(max-width: $breakpoint-mobile600) {
+    @content;
+  }
+}
+
+@mixin mobile-550 {
+  @media(max-width: $breakpoint-mobile550) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media(max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+/*RWD-end*/
+/* 字體大小設定*/
+
+@mixin font-size_h2 {
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 700;
+
+}
+
+@mixin font-size_h3 {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+@mixin font-size_h4 {
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+@mixin font-size_h5 {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+@mixin font-size_p {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+@mixin font-title {
+  font-size: 3rem;
+  line-height: 1.25;
+  font-weight: 900;
+
+  @include pad {
+    font-size: 2.25rem;
+  }
+
+  @include mobile-767 {
+    font-size: 1.75rem;
+  }
+
+  @include mobile {
+    font-size: 1.5rem;
+  }
+}
+
+@mixin font-subhead {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 700;
+
+  @include pad {
+    font-size: 1.5rem;
+  }
+
+  @include mobile {
+    font-size: 1.25rem;
+  }
+}
+
+@mixin font-text {
+  @include font-size_h5;
+
+  @include mobile {
+    font-size: 1rem;
+  }
+}
+
+/*字體大小設定end*/
+
+
+@mixin text-hide {
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin flex-nowrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin bg-center {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin max-1320 {
+  width: calc(100% - ($container-gap * 2));
+  max-width: 1320px;
+  margin: 0 auto;
+}

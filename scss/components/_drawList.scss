@@ -1,0 +1,342 @@
+.main {
+  background-color: aliceblue;
+  font-size: 16px;
+  width: 100%;
+  overflow: auto;
+  margin: auto;
+  position: relative;
+  border-radius: 10px;
+}
+
+.optionContent {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #eceff1;
+  padding: 8px 16px;
+  margin: 20px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 5px;
+
+  @include mobile-767 {
+    font-size: 14px;
+  }
+}
+
+.box {
+  display: flex;
+  color: #363636;
+}
+
+.gmaeIcon {
+  width: 50px;
+  height: 50px;
+  margin-right: 25px;
+}
+
+.statisticsBox {
+  display: flex;
+}
+
+.titleDiv {
+  display: flex;
+  box-sizing: border-box;
+  color: $primaryTextColor;
+  height: 82px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+
+  .left {
+    min-height: 82px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 233, 18, 0.8) -48.44%,
+      #fef27a 110.22%
+    );
+    display: flex;
+  }
+
+  .rightTitle {
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .rightContent {
+    display: flex;
+  }
+
+  .titleNo {
+    width: 50px;
+    @include flex-center;
+  }
+
+  .titleDate {
+    width: 150px;
+    @include flex-center;
+  }
+
+  .titleNumber {
+    width: 270px;
+    @include flex-center;
+  }
+}
+
+.statisticsTitleDiv {
+  width: 100%;
+  display: inline-flex;
+  box-sizing: border-box;
+  display: flex;
+    color: $primaryTextColor;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+
+  .left {
+    min-height: 82px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 233, 18, 0.8) -48.44%,
+      #fef27a 110.22%
+    );
+    display: flex;
+  }
+
+  .toDataTotalArea {
+    width: 470px;
+    @include flex-center;
+  }
+
+  .rightTitle {
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .rightContent {
+    display: flex;
+  }
+}
+
+.leftBox {
+  display: flex;
+  background-color: #ffffff;
+  min-height: 70px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: $primaryTextColor;
+  
+
+  .toDataTotalArea {
+    width: 470px;
+    @include flex-center;
+  }
+}
+
+.toSortArea {
+  width: 50px;
+  @include flex-center;
+}
+
+.toDateArea {
+  width: 150px;
+  @include flex-center;
+}
+
+.toLuckyArea {
+  width: 270px;
+  @include flex-center;
+}
+
+.rightBoxContent {
+  display: flex;
+  font-size: 18px;
+}
+
+.luckyNumber {
+  width: 30px;
+  height: 30px;
+  border-radius: 28px;
+  line-height: 30px;
+  text-align: center;
+  margin-right: 15px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: $primaryCheckColor;
+
+  @include mobile-550 {
+    margin-right: 10px;
+  }
+}
+
+.bodyLuckyNumber {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  @include flex-center;
+  z-index: 1;
+  margin: auto;
+  color: #fff;
+}
+
+.unLuckyNumber {
+  width: 30px;
+  height: 30px;
+  border-radius: 28px;
+  line-height: 30px;
+  text-align: center;
+  margin-right: 15px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: $primaryCheckOutColor;
+
+  @include mobile-550 {
+    margin-right: 10px;
+  }
+}
+
+.number-area {
+  width: 30px;
+  @include flex-center;
+}
+
+.allPeriodbtnBoxArea {
+  position: sticky;
+  top: 80px;
+  z-index: 2;
+  width: 100%;
+  height: 78px;
+  background-color: white;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.allPeriodbtnBox {
+  display: flex;
+  @include max-1320;
+  height: 100%;
+  background-color: white;
+
+  @include pc-1340 {
+    width: 95%;
+    margin: auto;
+  }
+}
+
+.allbtnBox {
+  @include flex-center;
+  color: $primaryTextColor;
+  flex-wrap: wrap;
+
+  @include pad {
+    justify-content: flex-start;
+  }
+}
+
+.allbtnNumberBox {
+  @include flex-center;
+  flex-wrap: wrap;
+  color: $primaryTextColor;
+
+  @include pc-1340 {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.mainBtn {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: none;
+  margin-right: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.periodBtn {
+  font-size: 18px;
+  width: 112px;
+  height: 100%;
+  margin-right: 60px;
+  font-weight: bold;
+  color: #363636;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-bottom: 4px solid white;
+  @include flex-center;
+
+  @include pad950 {
+    margin-right: 20px;
+  }
+
+  @include mobile-600 {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  @include mobile-550 {
+    font-size: 12px;
+    margin-right: 0px;
+  }
+}
+
+.periodBtn:hover {
+  border-bottom: 4px solid $primaryCheckColor;
+}
+
+.optionBtn {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  cursor: pointer;
+  margin-left: 15px;
+  position: relative;
+}
+
+.analyzeBtn {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.check {
+  width: 14px;
+  position: absolute;
+  display: block;
+  margin-left: 3px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.optionBtnActive {
+  color: $primaryCheckColor;
+  border-bottom: 4px solid $primaryCheckColor;
+  box-sizing: border-box;
+}
+
+.btnCheckActive {
+  background-color: $primaryCheckColor;
+}
+
+.analysis {
+  @include pad {
+    width: 100%;
+  }
+}

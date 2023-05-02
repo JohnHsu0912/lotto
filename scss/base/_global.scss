@@ -1,0 +1,26 @@
+body {
+  font-family: 'Inter', sans-serif;
+  overscroll-behavior: contain; //避免滾動穿透
+  user-select: none; //不可複製內容
+  // padding-top: 100px; 看header fixed的高度
+  margin: 0 auto;
+  max-width: 1920px;
+  padding-top: $header-hight;
+  background: #F5F7F8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
