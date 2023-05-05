@@ -24,6 +24,12 @@
   }
 }
 
+@mixin pc-1280 {
+  @media(max-width:$breakpoint-pc-1280) {
+    @content;
+  }
+}
+
 @mixin pc-over-990 {
   @media(min-width: $breakpoint-pc-990) {
     @content;
@@ -97,7 +103,7 @@
 @mixin font-size_h4 {
   font-size: 30px;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 @mixin font-size_h5 {

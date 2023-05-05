@@ -39,11 +39,13 @@ footer {
     .footerBodyLogo {
       @include flex-between;
       margin: 75px 0 120px;
-@include mobile-767{
-  flex-direction: column;
-  justify-content: center;
-  margin: 60px 0;
-}
+
+      @include mobile-767 {
+        flex-direction: column;
+        justify-content: center;
+        margin: 60px 0;
+      }
+
       h2 {
         display: inline-block;
         font-weight: 900;
@@ -59,15 +61,34 @@ footer {
           line-height: 17px;
           color: $primaryTextColor;
           margin-bottom: 10px;
+
+          @include mobile-767 {
+            margin-top: 30px;
+          }
         }
 
         div {
-          width: 335px;
-          height: 50px;
-          background: $primaryColorDark;
-          border-radius: 5px;
-          @include mobile-767{
-            width: 300px;
+          @include flex-between;
+
+          a {
+            display: inline-block;
+            line-height: 45px;
+
+            &:hover {
+              transform: translateY(-1px);
+            }
+          }
+        }
+
+        @include mobile {
+          margin: 0 auto;
+
+          div {
+            flex-direction: column;
+
+            a {
+              margin-bottom: 10px;
+            }
           }
         }
       }
@@ -75,7 +96,6 @@ footer {
 
     .footerBodyNav {
       display: flex;
-      justify-content: center;
 
       p {
         font-weight: 700;
@@ -95,17 +115,13 @@ footer {
         &:hover {
           color: $primaryColor;
         }
-        @include pad{
+
+        @include pad {
           font-size: 12px;
         }
-        @include mobile-767{
-          font-size: 14px;
-        }
-      }
 
-      .footerBodyNavAbout {
-        nav {
-          margin-right: $footerNav-gap;
+        @include mobile-767 {
+          font-size: 14px;
         }
       }
 
@@ -119,79 +135,47 @@ footer {
         }
       }
 
-      .footerBodyNavOther {
-        nav {
-          margin-right: $footerNav-gap;
-        }
-      }
-      @media screen and (max-width:1280px){
-        .footerBodyNavAbout{
-          nav{
-            margin-right:50px;
+      @media screen and (max-width:1280px) {
+        .footerBodyNavGames {
+          nav {
+            div {
+              margin-right: 50px;
+            }
           }
         }
-        .footerBodyNavGames{
-nav{div{
-  margin-right:50px;
-}}
-        }
-        .footerBodyNavOther{
-          nav{
-            margin-right:50px;
+      }
+
+      @include pc {
+        .footerBodyNavGames {
+          nav {
+            div {
+              margin-right: 20px;
+            }
           }
         }
-    }
-    @include pc{
-      .footerBodyNavAbout{
-        nav{
-          margin-right:20px;
+      }
+
+      @include mobile-767 {
+        flex-direction: column;
+        padding-left: 5%;
+
+        .footerBodyNavGames {
+          p {
+            margin-bottom: 20px;
+            margin-top: 50px;
+          }
+
+          nav {
+            flex-wrap: wrap;
+
+            div {
+              margin-bottom: 20px;
+              margin-right: 0;
+              width: 50%;
+            }
+          }
         }
       }
-      .footerBodyNavGames{
-nav{div{
-margin-right:20px;
-}}
-      }
-      .footerBodyNavOther{
-        nav{
-          margin-right:20px;
-        }
-      }
-    }
-    @include mobile-767{
-      flex-direction: column;
-      padding-left: 5%;
-      .footerBodyNavAbout{
-        p{
-          margin-bottom: 20px;
-        }
-        nav{
-          margin-right:0px;
-        }
-      }
-      .footerBodyNavGames{
-        p{
-          margin-bottom: 20px;
-          margin-top: 50px;
-        }
-nav{
-  flex-wrap: wrap;
-  div{
-margin-bottom:20px;
-margin-right: 0;
-width: 50%;
-}}
-      }
-      .footerBodyNavOther{
-        p{
-          margin-bottom: 20px;
-          margin-top: 50px;
-        }
-        nav{
-          margin-right:0px;
-        }
-      }
-    }
     }
 
     .footerBodybottom {
@@ -228,6 +212,6 @@ width: 50%;
   }
 }
 
-.footerLogo{
-  width: 300px;
+.footerLogo {
+  width: 250px;
 }

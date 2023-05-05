@@ -107,18 +107,30 @@
   img {
     max-width: 100%;
   }
+  @include pc-1280{
+    justify-content: start;
+  }
 }
 
 .bannerContent {
   width: 1320px;
   height: 50px;
   position: absolute;
-  top: 25%;
+  top: 10%;
   @include pc-1340{
     width: 95%;
     margin: auto;
   }
-
+  @include pc-1280{
+    width: 58%;
+    margin-left: 3%;
+  }
+ @include pc{
+  top: 5%;
+ }
+ @include mobile-550{
+  top:10%;
+ }
   p {
     font-weight: 700;
     font-size: 42px;
@@ -127,14 +139,17 @@
 
     @include pc{
       font-size: 36px;
+      line-height: 1;
+      margin-bottom: 10px;
+      font-weight: 600;
     }
 
     @include pad{
-      font-size: 22px;
+      font-size: 24px;
     }
 
     @include mobile-550{
-      font-size: 18px;
+      font-size: 20px;
       max-width: 250px;
     }
   }
@@ -218,7 +233,7 @@
     margin: auto;
   }
 
-  
+
   .guideText{
     width: 100%;
     display: flex;

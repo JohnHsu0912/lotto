@@ -110,32 +110,60 @@ export const API_Future_MMRP6DG = `${api}D6Future/MMRP6DG`;
 
 export const API_Future_REGXI6DG = `${api}D6Future/REGXI6DG`;
 
+export function judgeForHtml(gameCode) {
+  if (gameCode === "TL2DG") return "pcso-2d";
+  if (gameCode === "TL3DG") return "pcso-3d";
+  if (gameCode === "TL4DG") return "pcso-4d";
+  if (gameCode === "TL6DG") return "pcso-6d";
+  if (gameCode === "NCR2DG") return "manila-2d";
+  if (gameCode === "REGII2DG") return "cagayan-2d";
+  if (gameCode === "REGV2DG") return "bicol-2d";
+  if (gameCode === "REGX2DG") return "mindanao-2d";
+  if (gameCode === "NCR3DG") return "manila-3d";
+  if (gameCode === "REGI3DG") return "ilocos-3d";
+  if (gameCode === "REGVI3DG") return "western-visayas-3d";
+  if (gameCode === "REGVIII3DG") return "eastern-visayas-3d";
+  if (gameCode === "REGXII3DG") return "soccsksargen-3d";
+  if (gameCode === "BARMM3DG") return "bangsamoro-3d";
+  if (gameCode === "NCR4DG") return "manila-4d";
+  if (gameCode === "CAR4DG") return "cordillera-4d";
+  if (gameCode === "REGIII4DG") return "luzon-4d";
+  if (gameCode === "REGVII4DG") return "central-visayas-4d";
+  if (gameCode === "REGIX4DG") return "zamboanga-4d";
+  if (gameCode === "REGXIII4DG") return "caraga-4d";
+  if (gameCode === "NCR6DG") return "manila-6d";
+  if (gameCode === "REGI6DG") return "ilocos-6d";
+  if (gameCode === "REGIV6DG") return "calabarzon-6d";
+  if (gameCode === "MMRP6DG") return "mimaropa-6d";
+  if (gameCode === "REGXI6DG") return "davao-6d";
+}
+
 export function judgeTrendingAndHistoryAPI(name) {
-  if (name === "2D Lotto") return API_FULL_TL2DG;
-  if (name === "3D Lotto") return API_FULL_TL3DG;
-  if (name === "4D Lotto") return API_FULL_TL4DG;
-  if (name === "6D Lotto") return API_FULL_TL6DG;
-  if (name === "Manila 2D") return API_FULL_NCR2DG;
-  if (name === "Cagayan 2D") return API_FULL_REGII2DG;
-  if (name === "Bicol 2D") return API_FULL_REGV2DG;
-  if (name === "Mindanao 2D") return API_FULL_REGX2DG;
-  if (name === "Manila 3D") return API_FULL_NCR3DG;
-  if (name === "Ilocos 3D") return API_FULL_REGI3DG;
-  if (name === "Western Visayas 3D") return API_FULL_REGVI3DG;
-  if (name === "Eastern Visayas 3D") return API_FULL_REGVIII3DG;
-  if (name === "Soccsksargen 3D") return API_FULL_REGXII3DG;
-  if (name === "Bangsamoro 3D") return API_FULL_BARMM3DG;
-  if (name === "Manila 4D") return API_FULL_NCR4DG;
-  if (name === "Cordillera 4D") return API_FULL_CAR4DG;
-  if (name === "Luzon 4D") return API_FULL_REGIII4DG;
-  if (name === "Central Visayas 4D") return API_FULL_REGVII4DG;
-  if (name === "Zamboanga 4D") return API_FULL_REGIX4DG;
-  if (name === "Caraga 4D") return API_FULL_REGXIII4DG;
-  if (name === "Manila 6D") return API_FULL_NCR6DG;
-  if (name === "Ilocos 6D") return API_FULL_REGI6DG;
-  if (name === "Calabarzon 6D") return API_FULL_REGIV6DG;
-  if (name === "Mimaropa 6D") return API_FULL_MMRP6DG;
-  if (name === "Davao 6D") return API_FULL_REGXI6DG;
+  if (name === "pcso-2d") return API_FULL_TL2DG;
+  if (name === "pcso-3d") return API_FULL_TL3DG;
+  if (name === "pcso-4d") return API_FULL_TL4DG;
+  if (name === "pcso-6d") return API_FULL_TL6DG;
+  if (name === "manila-2d") return API_FULL_NCR2DG;
+  if (name === "cagayan-2d") return API_FULL_REGII2DG;
+  if (name === "bicol-2d") return API_FULL_REGV2DG;
+  if (name === "mindanao-2d") return API_FULL_REGX2DG;
+  if (name === "manila-3d") return API_FULL_NCR3DG;
+  if (name === "ilocos-3d") return API_FULL_REGI3DG;
+  if (name === "western-visayas-3d") return API_FULL_REGVI3DG;
+  if (name === "eastern-visayas-3d") return API_FULL_REGVIII3DG;
+  if (name === "soccsksargen-3d") return API_FULL_REGXII3DG;
+  if (name === "bangsamoro-3d") return API_FULL_BARMM3DG;
+  if (name === "manila-4d") return API_FULL_NCR4DG;
+  if (name === "cordillera-4d") return API_FULL_CAR4DG;
+  if (name === "luzon-4d") return API_FULL_REGIII4DG;
+  if (name === "central-visayas-4d") return API_FULL_REGVII4DG;
+  if (name === "zamboanga-4d") return API_FULL_REGIX4DG;
+  if (name === "caraga-4d") return API_FULL_REGXIII4DG;
+  if (name === "manila-6d") return API_FULL_NCR6DG;
+  if (name === "ilocos-6d") return API_FULL_REGI6DG;
+  if (name === "calabarzon-6d") return API_FULL_REGIV6DG;
+  if (name === "mimaropa-6d") return API_FULL_MMRP6DG;
+  if (name === "davao-6d") return API_FULL_REGXI6DG;
 }
 
 export function judgeNextGameAPI(gameCode) {

@@ -7,9 +7,7 @@ let statistics = [];
 //用來設置背景標註的開關
 let ballsBackGroundState = [];
 
-//先保留背景標註的初始值 用來回歸第一次
-
-//抓取API資料塞進去
+//抓取API資料塞進去  倒敘排行
 let vanillaData = [];
 
 //是否顯示遺漏表的開關
@@ -43,7 +41,12 @@ let showNameChinese = ["1st", "2nd", "3rd", "4th", "5th", "6th"];
 let titleColor = ["one", "two", "three", "four", "five", "six"];
 
 //用來表示數據統計的標題
-let statisticsName = ["Occurrences", "Max Omission", "Average Omission", "Max Continuous"];
+let statisticsName = [
+  "Occurrences",
+  "Max Omission",
+  "Average Omission",
+  "Max Continuous",
+];
 
 //線的顏色
 let lineColor = [
@@ -55,9 +58,28 @@ let lineColor = [
   "#2BB7F3",
 ];
 
-const api = "https://phlottodev1.azurewebsites.net/";
-const API_FULL_TL2DG = `${api}Get2DLottoInfosFull/TL2DG`;
-const API_FULL_REGIV6DG = `${api}Get6DLottoInfosFull/REGIV6DG`;
+
+function judgeBallAreaWidth(balls) {
+  
+  if (balls.length === 0) {
+    return ""
+  }
+  if (balls.length === 2) {
+    return "width:86px"
+  }
+  if (balls.length === 3) {
+    return "width:129px"
+  }
+  if (balls.length === 4) {
+    return "width:172px"
+  }
+  if (balls.length === 5) {
+    return "width:188px"
+  }
+  if (balls.length === 6) {
+    return "width:258px"
+  }
+}
 
 //先抓取API然後塞進 vanillaData
 async function getApi() {
@@ -198,17 +220,32 @@ function mainTitle() {
       let res = mainRange.map((num, x) => {
         return `<div class="number-area">${num}</div>`;
       });
-      return `<div class="color-set-title-${
-        titleColor[i]
-      }"><div class="rightTitle">${showNameChinese[i]} Digit</div>
-              <div class="rightContent">${res.join("")}</div></div>`;
+      return `<th class="color-set-title-${titleColor[i]}">
+      <div class="rightTitle">
+      ${showNameChinese[i]}
+       Digit
+       </div>
+      <div class="rightContent">${res.join("")}</div>
+      </th>`;
     }
   });
-  let newTitle = document.createElement("div");
+  let newTitle = document.createElement("thead");
   newTitle.className = "titleDiv";
-  document.querySelector(".main").appendChild(newTitle);
-  let newTitleInfo = `<div class="left"><div class="titleNo">No.</div><div class="titleDate">Draw No.</div>
-    <div class="titleNumber">Results</div></div>${result.join("")}`;
+  document.getElementById("main").appendChild(newTitle);
+  let newTitleInfo = `<tr>
+                          <th class="left"><div class="titleNo">
+                            No.
+                            </div>
+                          <div class="titleDate" id="reverseBtn">
+                            Draw No.
+                            <img class="titleIcon" src="../../images/trending/two-way-arrow.png"/>
+                            </div>
+                          </th>
+                          <th>
+                            <div class="resultTitle" style=${judgeBallAreaWidth(balls)}>Results</div>
+                          </th>
+                            ${result.join("")}
+                          </tr>`;
   newTitle.innerHTML = newTitleInfo;
 }
 
@@ -219,17 +256,25 @@ function statisticsTitle() {
       let res = mainRange.map((num) => {
         return `<div class="number-area">${num}</div>`;
       });
-      return `<div class="color-set-title-${
-        titleColor[i]
-      }"><div class="rightTitle">${showNameChinese[i]} Digit</div>
-        <div class="rightContent">${res.join("")}</div></div>`;
+      return `<td class="color-set-title-${titleColor[i]}">
+      <div class="rightTitle">${showNameChinese[i]} Digit</div>
+        <div class="rightContent">${res.join("")}</div>
+        </td>`;
     }
   });
-  let statistics = document.createElement("div");
+  let statistics = document.createElement("tr");
   statistics.className = "statisticsTitleDiv";
-  document.querySelector(".main").appendChild(statistics);
-  let newStatisticsTitleInfo = `<div class="left"><div class="toDataTotalArea">Data Statistics</div>
-        </div>${result.join("")}`;
+  document.getElementById("main").appendChild(statistics);
+  let newStatisticsTitleInfo = `<td class="left">
+                                <div class="toDataTotalArea" 
+                                >
+                                Data Statistics
+                                </div>
+                                </td>
+                                <td class="resultTitle" style=${judgeBallAreaWidth(balls)}>
+                                </td>
+                                ${result.join("")}
+                                `;
   statistics.innerHTML = newStatisticsTitleInfo;
 }
 
@@ -258,9 +303,9 @@ function ballsTotal(data) {
           `color-set-${titleColor[luckyIndex]}`
         }">${isMissMap ? content : ""}</div>`;
       });
-      return `<div class="rightBoxContent color-set-backGround-${
+      return `<td class="rightBoxContent color-set-backGround-${
         titleColor[luckyIndex]
-      }">${firstData.join("")}</div>`;
+      }">${firstData.join("")}</td>`;
     }
   });
   return result.join("");
@@ -274,7 +319,7 @@ function ballsStatistics(data) {
         const down = data[num]
           ?.map((content) => `<span class="number-area">${content}</span>`)
           .join("");
-        return `<div class="rightBoxContent color-set-backGround-${titleColor[luckyIndex]}">${down}</div>`;
+        return `<td class="rightBoxContent color-set-backGround-${titleColor[luckyIndex]}">${down}</td>`;
       }
       return "";
     })
@@ -340,32 +385,65 @@ function mainDataRander(vanillaData, nowPeriod) {
   //根據資料顯示
   vanillaData.slice(0, nowPeriod).forEach((data, i) => {
     let win = data.winNumber.split(",");
-    let newCard = document.createElement("div");
+    let newCard = document.createElement("tr");
     newCard.className = "box";
-    document.querySelector(".main").appendChild(newCard);
-    let newCardInfo = `
-            <div class="leftBox">
-                <div class="toSortArea">${i + 1}</div>
-                <div class="toDateArea">${data.issue} </div>
-                ${ballsLotteryAera(win)}
-            </div>
-            ${ballsTotal(data)}`;
+    document.getElementById("main").appendChild(newCard);
+    let newCardInfo = `<td class="leftBox">
+                            <div class="toSortArea">${i + 1}</div>
+                            <div class="toDateArea">${data.issue} </div>
+                            
+                        </td>
+                        <td class="resultLuckyArea">
+                          ${ballsLotteryAera(win)}
+                        </td>
+                          ${ballsTotal(data)}`;
     newCard.innerHTML = newCardInfo;
   });
 }
 
+//顯示所有開獎資料順序顛倒的邏輯
+function mainDataReverseRander(vanillaData, nowPeriod) {
+  // 重新設置初始值
+  let ball = vanillaData[0]?.keys;
+  setVanillaBackGroundState(ball);
+
+  //根據資料顯示
+  vanillaData
+    .reverse()
+    .slice(0, nowPeriod)
+    .forEach((data, i) => {
+      let win = data.winNumber.split(",");
+      let newCard = document.createElement("tr");
+      newCard.className = "box";
+      document.getElementById("main").appendChild(newCard);
+      let newCardInfo = `<td class="leftBox">
+                              <div class="toSortArea">${i + 1}</div>
+                              <div class="toDateArea">${data.issue} </div>
+                          </td>
+                          <td class="resultLuckyArea">
+                            ${ballsLotteryAera(win)}
+                          </td>
+                            ${ballsTotal(data)}`;
+      newCard.innerHTML = newCardInfo;
+    });
+}
+
 //顯示所有數據統計的邏輯
 function mainStatisticsRander(statistics) {
-  const main = document.querySelector(".main");
+  const main = document.getElementById("main");
   let html = statistics
     .map(
       (data, i) => `
-    <div class="statisticsBox">
-      <div class="leftBox">
-        <div class="toDataTotalArea">${statisticsName[i]}</div>
-      </div>
+    <tr class="statisticsBox">
+      <td class="leftBox">
+        <div class="toDataTotalArea" 
+        >${statisticsName[i]}</div>
+      </td>
+        <td class="statisticsTitleDivResult" 
+        style=${judgeBallAreaWidth(balls)}>
+        </td>
       ${ballsStatistics(data)}
-    </div>
+    </tr>
   `
     )
     .join("");
@@ -405,6 +483,7 @@ function handleBallsNumberBtn() {
       showBtn[i].classList.toggle("btnCheckActive");
       toggleBallsNumber(i);
       clearAndRenderData();
+      handleReverse();
     });
   }
 }
@@ -413,10 +492,10 @@ function handleBallsNumberBtn() {
 function drawLines() {
   let canvas = null;
   let context = null;
-  const main = document.querySelector(".main");
+  const main = document.getElementById("main");
   const width = main.scrollWidth;
   const height = main.scrollHeight;
-  const panelTop = main.scrollTop;
+  const panelpx = 15;
 
   canvas = document.createElement("canvas");
   canvas.width = width;
@@ -425,7 +504,9 @@ function drawLines() {
   main.appendChild(canvas);
   context = canvas.getContext("2d");
 
-  canvas.style.top = panelTop + "px";
+  const parentRect = main.getBoundingClientRect();
+
+  canvas.style.top = 0 + "px";
   canvas.style.left = 0 + "px";
   context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -434,12 +515,13 @@ function drawLines() {
     const color = lineColor[i];
 
     for (let j = 0; j < line.length - 1; j++) {
-      const select1 = line[j];
-      const select2 = line[j + 1];
-      const x1 = select1.offsetLeft + select1.offsetWidth / 2;
-      const y1 = select1.offsetTop + select1.offsetHeight / 2 - panelTop;
-      const x2 = select2.offsetLeft + select2.offsetWidth / 2;
-      const y2 = select2.offsetTop + select2.offsetHeight / 2 - panelTop;
+      const childRect1 = line[j].getBoundingClientRect();
+      const childRect2 = line[j + 1].getBoundingClientRect();
+
+      const x1 = childRect1.x - parentRect.x + panelpx;
+      const y1 = childRect1.y - parentRect.y + panelpx;
+      const x2 = childRect2.x - parentRect.x + panelpx;
+      const y2 = childRect2.y - parentRect.y + panelpx;
 
       context.beginPath();
       context.moveTo(x1, y1);
@@ -473,6 +555,24 @@ function loadOver() {
   load.style.display = "none";
 }
 
+// 變更順序的邏輯
+function handleReverse() {
+  const reverseBtn = document.getElementById("reverseBtn");
+  reverseBtn.addEventListener("click", () => {
+    console.log(1);
+    clearAllData(); //清除所有資料
+    clearLine(); //清除所有線
+    clearAllStatistics(); //清除所有統計資料
+    clearAllStatisticsTitle(); //清除所有數據標題
+    mainDataReverseRander(vanillaData, nowPeriod);
+    if (isShowLine) {
+      drawLines();
+    }
+    statisticsTitle();
+    mainStatisticsRander(statistics);
+  });
+}
+
 window.onload = function () {
   getApi().then(() => {
     mainTitle();
@@ -485,5 +585,6 @@ window.onload = function () {
     mainStatisticsRander(statistics);
     drawLines();
     loadOver();
+    handleReverse();
   });
 };

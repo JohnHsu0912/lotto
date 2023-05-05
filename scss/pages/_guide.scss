@@ -1,3 +1,9 @@
+.guideMain{
+  background-color: #ffffff;
+  padding-bottom: 80px;
+  box-sizing: border-box
+}
+
 .guideContain {
   @include max-1320;
 
@@ -54,7 +60,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 80px 0;
 
   @include pc-1340{
     flex-direction: column-reverse;

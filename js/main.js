@@ -4,179 +4,9 @@ import { createTabItem } from "./components.js";
 import { getDurationText } from "./utils.js";
 import { format } from "https://esm.run/date-fns";
 import { ALL_Future_API } from "../api/api.js";
-import { judgeNextGameAPI } from "../api/api.js";
+import { judgeNextGameAPI,judgeForHtml } from "../api/api.js";
 
 let data = [];
-const test = {
-  TL2DG: {
-    recent: [
-      {
-        winTime: "2023-04-23 21:00:00",
-        gameCode: "TL2DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "28,03",
-        encodeTime: "2023-04-23 21:12:03",
-        numeroNo: "20230423-3",
-      },
-      {
-        winTime: "2023-04-23 17:00:00",
-        gameCode: "TL2DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "11,09",
-        encodeTime: "2023-04-23 17:06:12",
-        numeroNo: "20230423-2",
-      },
-      {
-        winTime: "2023-04-23 14:00:00",
-        gameCode: "TL2DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "13,29",
-        encodeTime: "2023-04-23 14:06:21",
-        numeroNo: "20230423-1",
-      },
-    ],
-    future: [
-      {
-        winTime: "2023-04-25 18:26:00",
-        gameCode: "TL2DG",
-        bizDate: "2023-04-24 00:00:00",
-        numeroNo: "20230424-1",
-      },
-      {
-        winTime: "2023-04-28 17:00:00",
-        gameCode: "TL2DG",
-        bizDate: "2023-04-24 00:00:00",
-        numeroNo: "20230424-2",
-      },
-    ],
-  },
-  TL3DG: {
-    recent: [
-      {
-        winTime: "2023-04-23 21:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "4,3,5",
-        encodeTime: "2023-04-23 21:11:06",
-        numeroNo: "20230423-3",
-      },
-      {
-        winTime: "2023-04-23 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "5,6,1",
-        encodeTime: "2023-04-23 17:04:50",
-        numeroNo: "20230423-2",
-      },
-      {
-        winTime: "2023-04-23 14:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "3,7,6",
-        encodeTime: "2023-04-23 14:05:03",
-        numeroNo: "20230423-1",
-      },
-    ],
-    future: [
-      {
-        winTime: "2023-04-28 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-24 00:00:00",
-        numeroNo: "20230424-1",
-      },
-      {
-        winTime: "2023-04-24 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-24 00:00:00",
-        numeroNo: "20230424-2",
-      },
-    ],
-  },
-  TL4DG: {
-    recent: [
-      {
-        winTime: "2023-04-23 21:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "4,3,5",
-        encodeTime: "2023-04-23 21:11:06",
-        numeroNo: "20230423-3",
-      },
-      {
-        winTime: "2023-04-23 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "5,6,1",
-        encodeTime: "2023-04-23 17:04:50",
-        numeroNo: "20230423-2",
-      },
-      {
-        winTime: "2023-04-23 14:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "3,7,6",
-        encodeTime: "2023-04-23 14:05:03",
-        numeroNo: "20230423-1",
-      },
-    ],
-    future: [
-      {
-        winTime: "2023-04-28 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-24 00:00:00",
-        numeroNo: "20230424-1",
-      },
-      {
-        winTime: "2023-04-24 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-24 00:00:00",
-        numeroNo: "20230424-2",
-      },
-    ],
-  },
-  TL6DG: {
-    recent: [
-      {
-        winTime: "2023-04-23 21:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "4,3,5",
-        encodeTime: "2023-04-23 21:11:06",
-        numeroNo: "20230423-3",
-      },
-      {
-        winTime: "2023-04-23 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "5,6,1",
-        encodeTime: "2023-04-23 17:04:50",
-        numeroNo: "20230423-2",
-      },
-      {
-        winTime: "2023-04-23 14:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-23 00:00:00",
-        winNo: "3,7,6",
-        encodeTime: "2023-04-23 14:05:03",
-        numeroNo: "20230423-1",
-      },
-    ],
-    future: [
-      {
-        winTime: "2023-04-28 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-24 00:00:00",
-        numeroNo: "20230424-1",
-      },
-      {
-        winTime: "2023-04-24 17:00:00",
-        gameCode: "TL3DG",
-        bizDate: "2023-04-24 00:00:00",
-        numeroNo: "20230424-2",
-      },
-    ],
-  },
-};
 
 const getDataByGameCode = (data, gameCode) =>
   new Promise((resolve) => {
@@ -198,8 +28,8 @@ function loadGameCode(gameCode) {
 }
 
 function loadOver() {
-  let load = document.querySelector(".load");
-  load.style.display = "none";
+  let load = document.querySelector('.load');
+  load.style.display = 'none';
 }
 
 function callMutiApi() {
@@ -230,12 +60,12 @@ function callMutiApi() {
         }
 
         function buildNav() {
-          const $nav = $("#nav-tab");
+          const $nav = $('#nav-tab');
           const categoryNames = Object.keys(Config.categories);
 
           // Bind events
-          $nav.on("show.bs.tab", (e) =>
-            buildGameCards($(e.target).data("category"))
+          $nav.on('show.bs.tab', (e) =>
+            buildGameCards($(e.target).data('category')),
           );
 
           // Append nav tabs
@@ -251,13 +81,13 @@ function callMutiApi() {
 
         function buildGameCards(categoryName) {
           const $gameCardsContainer = $(
-            ".drawCardList > .tab-pane .draw-cards"
+            '.drawCardList > .tab-pane .draw-cards',
           );
 
           // 根據 category 取得 Games
           let gameCodes = [];
 
-          if (categoryName === "ALL") {
+          if (categoryName === 'ALL') {
             gameCodes = Object.values(Config.categories)
               .map((category) => category.gameCodes)
               .flat();
@@ -268,7 +98,7 @@ function callMutiApi() {
 
           // 全部都處理完畢才會顯示
           Promise.all(
-            gameCodes.map((gameCode) => getGameDataAndBuildGameCard(gameCode))
+            gameCodes.map((gameCode) => getGameDataAndBuildGameCard(gameCode)),
           ).then(($cards) => $gameCardsContainer.html($cards));
         }
 
@@ -283,10 +113,10 @@ function callMutiApi() {
             }
             loadGameCode(gameCode);
             if (
-              gameCode === "TL2DG" ||
-              gameCode === "TL3DG" ||
-              gameCode === "TL4DG" ||
-              gameCode === "TL6DG"
+              gameCode === 'TL2DG' ||
+              gameCode === 'TL3DG' ||
+              gameCode === 'TL4DG' ||
+              gameCode === 'TL6DG'
             ) {
               currentGameData = null;
               setTimeout(function () {
@@ -327,7 +157,7 @@ function callMutiApi() {
           //每秒都在執行的callback
           function countdownCallback() {
             if ($card && currentGameData) {
-              const $countdown = $card.find(".drawCardCount");
+              const $countdown = $card.find('.drawCardCount');
               const { future } = currentGameData;
               const nextData = future[0];
               const start = new Date();
@@ -362,18 +192,18 @@ function callMutiApi() {
           const nextData = future[0];
           const startTime = new Date();
 
-          // 開獎時間
+          // 下期開獎時間
           const drawDate = format(
-            new Date(currentData.winTime),
-            "dd/MM/yyyy(EEE)-hh:mmaa"
+            new Date(nextData.winTime),
+            'dd/MM/yyyy(EEE)-hh:mmaa',
           );
           // 開獎號碼
           const $winNo = currentData.winNo
-            .split(",")
+            .split(',')
             .map((no) => $(`<span>${no}</span>`));
           // 開獎號碼
           const $drawNo = recent.map((item) =>
-            $(`<li><a class="dropdown-item">${item.numeroNo}</a></li>`)
+            $(`<li><a class="dropdown-item">${item.numeroNo}</a></li>`),
           );
 
           const $card = $(`
@@ -427,11 +257,11 @@ function callMutiApi() {
                   </div>
                 </div>
                 <div class="draw-links mt-4 d-flex justify-content-end">
-                  <a href="../pages/drawTrending/${currentData.gameCode}.html" class="trend-btn p-1 px-2 me-3">
+                  <a href="../pages/trending-research/${judgeForHtml(currentData.gameCode)}.html" class="trend-btn p-1 px-2 me-3">
                     <img src="/images/index/icon/share-fill.svg" />
                     <span>Draw Trending</span>
                   </a>
-                  <a href="../pages/history/${currentData.gameCode}.html" class="history-btn d-flex align-items-center">
+                  <a href="../pages/result/${judgeForHtml(currentData.gameCode)}.html" class="history-btn d-flex align-items-center">
                     <img src="/images/index/icon/calendar4-week.svg" />
                     <span>View History</span>
                   </a>
@@ -440,30 +270,30 @@ function callMutiApi() {
             </div>
           </div>
         `);
-          const $winBalls = $card.find(".drawCardWinBall");
-          const $drawNoButton = $card.find(".drawCardDrawNo");
-          const $countdown = $card.find(".drawCardCount");
+          const $winBalls = $card.find('.drawCardWinBall');
+          const $drawNoButton = $card.find('.drawCardDrawNo');
+          const $countdown = $card.find('.drawCardCount');
           const end = new Date(nextData.winTime);
           if (end.getTime() > startTime.getTime()) {
             $countdown.html(getDurationText(end));
           }
 
           $winBalls.append($winNo);
-          $card.find(".drawNoList").append($drawNo);
+          $card.find('.drawNoList').append($drawNo);
 
           $drawNo.forEach(($no) =>
-            $no.on("click", (e) => {
+            $no.on('click', (e) => {
               // 找到對應的 data
               const item = recent.find(
-                (item) => item.numeroNo === e.target.textContent
+                (item) => item.numeroNo === e.target.textContent,
               );
               // 修改 dropdown 顯示文字
               $drawNoButton.html(e.target.textContent);
               // 修改開獎號碼
               $winBalls.html(
-                item.winNo.split(",").map((no) => $(`<span>${no}</span>`))
+                item.winNo.split(',').map((no) => $(`<span>${no}</span>`)),
               );
-            })
+            }),
           );
 
           return $card;

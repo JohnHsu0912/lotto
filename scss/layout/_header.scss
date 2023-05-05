@@ -12,6 +12,7 @@ header {
     position: relative;
     background-color: #fff;
     @include max-1320;
+
     @include pc-990 {
       width: 100%;
     }
@@ -23,11 +24,13 @@ header {
 
     .navbar-brand {
       h1 {
-        font-weight: 900;
-        font-size: 25px;
-        line-height: 1.5;
+        @include text-hide;
+        width: 220px;
+        height: 32px;
+        background: url("/images/logo.png") no-repeat center /contain;
       }
     }
+
     .navbar-collapse {
       @include pc-990 {
         position: absolute;
@@ -39,6 +42,7 @@ header {
 
       .navbar-nav {
         margin-left: auto;
+
         @include pc-990 {
           overflow: auto;
           max-height: 450px;
@@ -47,11 +51,13 @@ header {
         .nav-item {
           border-radius: 5px;
           margin-left: 24px;
+
           @include pc-990 {
             margin-left: 0px;
             text-align: center;
             padding: 10px 0;
           }
+
           .nav-link {
             display: inline-block;
             font-size: 16px;
@@ -60,6 +66,7 @@ header {
             width: 88px;
             text-align: center;
             border-radius: 5px;
+
             @include pc-990 {
               width: 100%;
             }
@@ -97,7 +104,7 @@ header {
   margin-left: 12px;
   margin-top: 5px;
   position: static;
-  
+
   @include pc-990 {
     margin-left: 0px;
     display: block;
@@ -110,14 +117,15 @@ header {
 }
 
 @media (min-width: 992px) {
-  .dropdown-menu > li:hover > .dropdown-submenu {
+  .dropdown-menu>li:hover>.dropdown-submenu {
     display: block;
   }
 
-  .navbar .nav-item > .dropdown-menu {
+  .navbar .nav-item>.dropdown-menu {
     display: none;
   }
-  .navbar .nav-item:hover > .dropdown-menu {
+
+  .navbar .nav-item:hover>.dropdown-menu {
     margin-top: 0;
     display: block;
   }
@@ -129,8 +137,8 @@ header {
     margin-top: 10px;
     top: -7px;
 
-    @include pc-1650{
-      left:auto;
+    @include pc-1650 {
+      left: auto;
       margin-left: auto;
       margin-right: 0;
       right: 100%;

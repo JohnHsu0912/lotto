@@ -34,14 +34,11 @@ let balls = [];
 //用來設置總共球數區間
 let mainRange = [];
 
-
 //先抓取API然後塞進 vanillaData
 async function getApi() {
   const pageMainTitle = document.querySelector(".pageMainTitle");
   try {
-    const res = await fetch(
-      judgeTrendingAndHistoryAPI(pageMainTitle.id)
-    );
+    const res = await fetch(judgeTrendingAndHistoryAPI(pageMainTitle.id));
     const data = await res.json();
     const { results } = data[0];
     let ball = await results[0]?.keys;
@@ -106,7 +103,7 @@ function mainTitle() {
 function ballsLotteryAera(win) {
   const ballsWin = win.map((num, i) => {
     return `<div class=${
-      balls[i] === 1 ? "luckyNumber" : "unLuckyNumber"
+      balls[i] === 1 ? "historyLuckyNumber" : "unLuckyNumber"
     }>${num}</div>`;
   });
   return `<div class="toHistoryLuckyArea">${ballsWin.join("")}</div>`;
@@ -126,9 +123,9 @@ function btnChange() {
   let btnAll = document.querySelectorAll("#btn");
   for (let i = 0; i < btnAll.length; i++) {
     btnAll[i].addEventListener("click", function () {
-      // 按下該按鈕跟上一期的筆數一樣 則不做事
-      if (period[i] === nowPeriod) {
-        return;
+      let historyBoxNoResult = document.querySelectorAll(".historyBoxNoResult");
+      for (let x = 0; x < historyBoxNoResult.length; x++) {
+        historyBoxNoResult[x]?.remove();
       }
       for (let j = 0; j < btnAll.length; j++) {
         btnAll[j].className = "periodBtn";
@@ -173,9 +170,18 @@ function mainDataRander(vanillaData, nowPeriod) {
 
 //顯示所有搜尋歷史資料的邏輯
 function mainSearchDataRander(vanillaData) {
-  //根據資料顯示
-  vanillaData.forEach((data, i) => {
+  let searchData = [];
+  let historyBoxNoResult = document.querySelectorAll(".historyBoxNoResult");
+  for (let x = 0; x < historyBoxNoResult.length; x++) {
+    historyBoxNoResult[x]?.remove();
+  }
+  vanillaData.forEach((data) => {
     if (data.issue === searchPeriod) {
+      searchData.push(data);
+    }
+  });
+  if (searchData.length !== 0) {
+    searchData.forEach((data, i) => {
       let win = data.winNumber.split(",");
       let newCard = document.createElement("div");
       newCard.className = "historyBox";
@@ -191,9 +197,22 @@ function mainSearchDataRander(vanillaData) {
                 <div>
                 `;
       newCard.innerHTML = newCardInfo;
-    }
-    input.value = "";
-  });
+    });
+  } else {
+    let newCard = document.createElement("div");
+    newCard.className = "historyBoxNoResult";
+    // newCard.setAttribute("data-bs-toggle", "modal");
+    // newCard.setAttribute("data-bs-target", "#exampleModal");
+    document.querySelector(".historyMain").appendChild(newCard);
+    let newCardInfo = `
+                <div class="historyBoxNoResultContent">
+                <div class="toHistoryNotResultDateArea">No results found.</div>
+                <div>
+                `;
+    newCard.innerHTML = newCardInfo;
+  }
+  input.value = "";
+  //根據資料顯示
   // historyDetail();
 }
 
@@ -221,18 +240,14 @@ function historyDetail() {
   });
 }
 
-let input = document.getElementById("testInput");
+let input = document.getElementById("searchInput");
 let submitBtn = document.querySelector(".submitBtn");
 
 function fsubmitBtn(event) {
-  if (input.value.length === 0) {
-    Swal.fire({
-      text: "請輸入完整",
-      icon: "error",
-      confirmButtonColor: "red",
-    });
-    return;
-  }
+  // if (input.value.length === 0) {
+
+  //   return;
+  // }
   event.preventDefault();
   let str = "";
   let submitValue = input.value;

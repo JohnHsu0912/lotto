@@ -1,19 +1,23 @@
 .drawCardWrap {
   background: #f5f7f8;
+
   .drawCardTapbar {
     background: #ffffff;
     border: 1px solid #e8e8e8;
     position: sticky;
     top: 80px;
     z-index: 90;
+
     &Nav {
       @include max-1320;
       border-bottom: 0px;
       margin: 0 auto;
+
       @include mobile {
         width: 100%;
         flex-wrap: nowrap;
       }
+
       button {
         min-width: 90px;
         font-weight: 700;
@@ -25,54 +29,62 @@
         border-left: 0px;
         border-right: 0px;
         padding: 20px 18px;
+
         &.active {
           color: $primaryCheckColor;
           border-bottom: 4px solid $primaryCheckColor;
         }
+
         &:hover {
           border-bottom: 4px solid $primaryCheckColor;
         }
+
         @include mobile-767 {
           min-width: auto;
           flex: 1;
         }
+
         @include mobile {
           padding: 8px;
         }
       }
     }
   }
+
   .drawCardList {
     @include max-1320;
+
     @include mobile-767 {
       width: 100%;
     }
+
     .container {
       padding: 0;
 
       @include pc-1400 {
         max-width: 100%;
       }
+
       @include pc {
         max-width: 99%;
       }
     }
 
     .card {
-      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
       margin-bottom: 20px;
+      border: 0px;
 
       &-header {
         color: $primaryTextColor;
         font-weight: 700;
         font-size: 1.2rem;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 233, 18, 0.8) -48.44%,
-          #fef27a 110.22%
-        );
+        background: linear-gradient(180deg,
+            rgba(255, 233, 18, 0.8) -48.44%,
+            #fef27a 110.22%);
         @include flex-between;
         line-height: 1.2;
+        border-bottom: 0px;
 
         h3 {
           font-weight: 700;
@@ -118,6 +130,7 @@
               color: #5d5d5d;
 
               &::after {
+                display: inline-block;
                 font-size: 18px;
                 transform: translateY(2px);
               }
@@ -153,11 +166,13 @@
             font-weight: 600;
             border-radius: 5px;
             padding: 5px 10px;
+
             &:hover {
               background-color: #f1f1f1;
               color: #777777;
             }
           }
+
           .trend-btn {
             img {
               width: 16px;
@@ -238,6 +253,7 @@
 }
 
 .navbar-toggler {
+
   &:focus,
   &:active,
   &-icon:focus {

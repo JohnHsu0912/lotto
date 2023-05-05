@@ -1,50 +1,109 @@
 .directions {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 60px 0 80px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 60px 0 80px 0;
 }
 
 .note {
-    width: 700px;
-    font-size: 14px;
-    font-weight: 500;
-    background: #fff7b2;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 22px 37px;
-    box-sizing: border-box;
-    line-height: 23px;
-    color: #000000;
+  width: 700px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #fff7b2;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 22px 37px;
+  box-sizing: border-box;
+  line-height: 23px;
+  color: #000000;
 
-    b {
-        color: #fdc12d;
-    }
+  b {
+    color: #fdc12d;
+  }
 
-    @include pc-1340 {
-        width: 100%;
-        margin-bottom: 40px;
-    }
+  @include pc-1340 {
+    width: 100%;
+    margin-bottom: 40px;
+  }
 }
 
 .example {
-    width: 600px;
-    font-size: 14px;
-    font-weight: 500;
-    background: #ffffff;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 22px 37px;
-    box-sizing: border-box;
-    line-height: 23px;
-    color: #000000;
+  width: 600px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #ffffff;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 22px 37px;
+  box-sizing: border-box;
+  line-height: 23px;
+  color: #000000;
 
-    b {
-        color: #fdc12d;
-    }
+  b {
+    color: #fdc12d;
+  }
 
-    @include pc-1340 {
-        width: 100%;
-    }
+  @include pc-1340 {
+    width: 100%;
+  }
+}
+
+.bodyDiv {
+  overflow: auto;
+  width: 1000px;
+  height: 150px;
+  /* 固定高度 */
+  background-color: red;
+  margin: auto;
+}
+
+tr {
+  display: flex;
+  border-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+td,
+th {
+  border-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td:nth-child(1),
+th:nth-child(1) {
+  position: sticky;
+  left: 0;
+  /* 行永遠固定於左 */
+  z-index: 3;
+}
+
+td:nth-child(2),
+th:nth-child(2) {
+  position: sticky;
+  left: 200px;
+  /* 行永遠固定於左 */
+  z-index: 3;
+  @include mobile-550 {
+    position: static;
+    left: 0px;
+    z-index: 0;
+  }
+}
+
+thead tr th {
+  position: sticky;
+  top: 0;
+  /* 列首永遠固定於上 */
+}
+
+th:first-child {
+  z-index: 5;
 }

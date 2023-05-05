@@ -1,7 +1,7 @@
 .main {
-  background-color: aliceblue;
   font-size: 16px;
   width: 100%;
+  max-height: 600px;
   overflow: auto;
   margin: auto;
   position: relative;
@@ -42,23 +42,34 @@
   display: flex;
 }
 
+.colorBackGround {
+  box-sizing: border-box;
+}
+
 .titleDiv {
   display: flex;
   box-sizing: border-box;
   color: $primaryTextColor;
-  height: 82px;
+  height: 80px;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 5;
+  background-color: white;
 
   .left {
-    min-height: 82px;
+    min-height: 80px;
     background: linear-gradient(
       180deg,
       rgba(255, 233, 18, 0.8) -48.44%,
       #fef27a 110.22%
     );
     display: flex;
+    box-sizing: border-box;
+    background-color: white;
   }
 
   .rightTitle {
@@ -68,21 +79,52 @@
 
   .rightContent {
     display: flex;
+    height: 35px;
   }
 
   .titleNo {
-    width: 50px;
+    width: 80px;
     @include flex-center;
+    
+
+    @include mobile-550 {
+      width: 40px;
+
+      background: linear-gradient(
+        180deg,
+        rgba(255, 233, 18, 0.8) -48.44%,
+        #fef27a 110.22%
+      );
+    }
+  }
+
+  .titleIcon {
+    width: 30px;
   }
 
   .titleDate {
-    width: 150px;
-    @include flex-center;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    @include mobile-550 {
+      width: 120px;
+
+      background: linear-gradient(
+        180deg,
+        rgba(255, 233, 18, 0.8) -48.44%,
+        #fef27a 110.22%
+      );
+    }
   }
 
   .titleNumber {
-    width: 270px;
-    @include flex-center;
+    width: 215px;
+    display: flex;
+    align-items: center;
+    margin-left: 0;
   }
 }
 
@@ -91,24 +133,33 @@
   display: inline-flex;
   box-sizing: border-box;
   display: flex;
-    color: $primaryTextColor;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
+  color: $primaryTextColor;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  
 
   .left {
-    min-height: 82px;
+    min-height: 80px;
     background: linear-gradient(
       180deg,
       rgba(255, 233, 18, 0.8) -48.44%,
       #fef27a 110.22%
     );
     display: flex;
+    background-color: #fef27a;
   }
 
   .toDataTotalArea {
-    width: 470px;
-    @include flex-center;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    padding-left: 70px;
+
+    @include mobile-550 {
+      width: 160px;
+      padding-left: 20px;
+    }
   }
 
   .rightTitle {
@@ -119,6 +170,7 @@
 
   .rightContent {
     display: flex;
+    height: 36px;
   }
 }
 
@@ -128,29 +180,54 @@
   min-height: 70px;
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   color: $primaryTextColor;
-  
+
+  @include mobile-550 {
+    font-size: 12px;
+  }
 
   .toDataTotalArea {
-    width: 470px;
-    @include flex-center;
+    width: 200px;
+    padding-left: 70px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: white;
+
+    @include mobile-550 {
+      width: 160px;
+      padding-left: 20px;
+    }
   }
 }
 
 .toSortArea {
-  width: 50px;
+  width: 80px;
   @include flex-center;
+  background-color: white;
+
+  @include mobile-550 {
+    width: 40px;
+  }
 }
 
 .toDateArea {
-  width: 150px;
-  @include flex-center;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+
+  @include mobile-550 {
+    background-color: white;
+    width: 120px;
+  }
 }
 
 .toLuckyArea {
-  width: 270px;
-  @include flex-center;
+  
+  display: flex;
+  align-items: center;
 }
 
 .rightBoxContent {
@@ -164,15 +241,11 @@
   border-radius: 28px;
   line-height: 30px;
   text-align: center;
-  margin-right: 15px;
+  margin-right: 13px;
   color: white;
   font-weight: 700;
   font-size: 18px;
   background-color: $primaryCheckColor;
-
-  @include mobile-550 {
-    margin-right: 10px;
-  }
 }
 
 .bodyLuckyNumber {
@@ -191,15 +264,11 @@
   border-radius: 28px;
   line-height: 30px;
   text-align: center;
-  margin-right: 15px;
+  margin-right: 4px;
   color: white;
   font-weight: 700;
   font-size: 18px;
   background-color: $primaryCheckOutColor;
-
-  @include mobile-550 {
-    margin-right: 10px;
-  }
 }
 
 .number-area {
@@ -208,9 +277,10 @@
 }
 
 .allPeriodbtnBoxArea {
+  position: -webkit-sticky;
   position: sticky;
   top: 80px;
-  z-index: 2;
+  z-index: 8;
   width: 100%;
   height: 78px;
   background-color: white;
@@ -339,4 +409,29 @@
   @include pad {
     width: 100%;
   }
+}
+
+.resultLuckyArea{
+  min-height: 80px;
+  display: flex;
+  background-color: white;
+}
+
+.resultTitle{
+  min-height: 80px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 233, 18, 0.8) -48.44%,
+    #fef27a 110.22%
+  );
+  display: flex;
+  box-sizing: border-box;
+  background-color: white;
+  align-items: center;
+}
+
+.statisticsTitleDivResult{
+  min-height: 80px;
+  box-sizing: border-box;
+  background-color: white;
 }
